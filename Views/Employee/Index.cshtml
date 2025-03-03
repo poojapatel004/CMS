@@ -1,0 +1,41 @@
+﻿@using CMS.Models
+@model IEnumerable<EmployeeModel>  //use to iterate for collection object  <model name>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <h1 style="text-align:center;">Employee Details</h1>
+
+    <table class="table table-bordered table-responsive table-dark table-hover">
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+
+
+        @foreach (EmployeeModel item in Model)
+        {
+
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Department</td>
+                <td>@item.Salary</td>
+                <td>
+                    <a asp-action="EditEmployee" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="DeleteEmployee" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+</div>
+
+
